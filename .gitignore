@@ -1,0 +1,11 @@
+# Xcode
+.DS_Store
+*/build/*
+*.pbxuser
+xcuserdata
+profile
+*.xccheckout
+*.xcworkspace
+
+#CocoaPods
+Pods
