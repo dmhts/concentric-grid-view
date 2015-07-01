@@ -3,8 +3,10 @@ ConcentricGridView
 
 `ConcentricGridView` is a grid system that is used by UICollectionViewLayout to lay out UICollectionViewCells in a concentric way using different distribution algorithms: Concentric Uniform Distribution Algorithm (CUDA) and Concentric Consistent Distribution Algorithm (CCDA). You can see visualisations of aforementioned algorithms below (in the same order):
 
-<img src="https://raw.githubusercontent.com/dmgts/concentric-grid-view/master/assets/ConcentricGridViewPolygon.gif" width="300" title="Concentric Unifrom Distribution Algorithm">
-<img src="https://raw.githubusercontent.com/dmgts/concentric-grid-view/master/assets/ConcentricGridViewRectangle.gif" width="273" title="Concentric Consistent Distribution Algorithm">
+<div style="text-align: center">
+<img src="https://raw.githubusercontent.com/dmgts/concentric-grid-view/master/assets/ConcentricGridViewPolygon.gif" width="320" title="Concentric Unifrom Distribution Algorithm">
+<img src="https://raw.githubusercontent.com/dmgts/concentric-grid-view/master/assets/ConcentricGridViewRectangle.gif" width="291" title="Concentric Consistent Distribution Algorithm">
+</div>
 
 ## Requirements
 
