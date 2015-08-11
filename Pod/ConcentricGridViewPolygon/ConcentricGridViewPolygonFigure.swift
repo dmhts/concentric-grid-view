@@ -28,11 +28,11 @@ class ConcentricGridViewPolygonFigure : ConcentricGridViewFigure {
     Gets a size (in cells) for a polygon inner rectangle with a specified index. 
     Rectangles are started counting from the middle leftmost point of a polygon and finish at the leftmost top point of a polygon.
     
-    :param: index An index of an inner rectanglea
+    - parameter index: An index of an inner rectanglea
     
-    :returns: An inner rectangle size in cells by a given index.
+    - returns: An inner rectangle size in cells by a given index.
     */
-    func getInnerRectangleSizeInCellsBy(#index: Int) -> CGSize {
+    func getInnerRectangleSizeInCellsBy(index index: Int) -> CGSize {
         // Starts from the middle leftmost point of a polygon and moves to the top
         let width = getSizeInCells().width - CGFloat(index)
         let height = CGFloat(index * 2) + 1
@@ -44,12 +44,12 @@ class ConcentricGridViewPolygonFigure : ConcentricGridViewFigure {
     By default this method is used for getting a rectangle index by priority considering swingingCount in odd polygons but it can be used for even ones - just switch the inverseSwinging option.
     It means in odd rectangles swinging happens from top to bottom and in even vice versa
     
-    :param: priority A priority of a rectangle
-    :param: swingingCount A number of swinging
+    - parameter priority: A priority of a rectangle
+    - parameter swingingCount: A number of swinging
     
-    :returns: An inner rectangle index using a priority and a singing count.
+    - returns: An inner rectangle index using a priority and a singing count.
     */
-    func getInnerRectangleIndexBy(#priority: Int, swingingCount: Int) -> Int {
+    func getInnerRectangleIndexBy(priority priority: Int, swingingCount: Int) -> Int {
         let halfSideWithoutCenter = getHalfSideInCells()
         var innerRectangleIndex : Int!
         
@@ -70,7 +70,7 @@ class ConcentricGridViewPolygonFigure : ConcentricGridViewFigure {
     /**
     Gets the half side (in cells) without a center item
     
-    :returns: A down-rounded half value of a side cells.
+    - returns: A down-rounded half value of a side cells.
     */
     func getHalfSideInCells() -> CGFloat {
         return floor(CGFloat(innerRectanglesCount / 2))
@@ -79,21 +79,21 @@ class ConcentricGridViewPolygonFigure : ConcentricGridViewFigure {
     /**
     Adds a rectangle to the storage
     
-    :param: rectangle A primitive figure to store.
+    - parameter rectangle: A primitive figure to store.
     */
-    func add(#rectangle: ConcentricGridViewFigurePrimitive) {
+    func add(rectangle rectangle: ConcentricGridViewFigurePrimitive) {
         rectangles.append(rectangle)
     }
     
     /**
     Gets an inner rectangle by an index.
     
-    :param: index An index of an inner rectangle.
+    - parameter index: An index of an inner rectangle.
     
-    :returns: A primitive figure by a given index if one exists.
+    - returns: A primitive figure by a given index if one exists.
     */
-    func getInnerRectangleBy(#index: Int) -> ConcentricGridViewFigurePrimitive? {
-        for (innerIndex, rectangle) in enumerate(rectangles) {
+    func getInnerRectangleBy(index index: Int) -> ConcentricGridViewFigurePrimitive? {
+        for (innerIndex, rectangle) in rectangles.enumerate() {
             if innerIndex == index {
                 return rectangle
             }

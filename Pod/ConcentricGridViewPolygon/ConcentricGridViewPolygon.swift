@@ -17,12 +17,12 @@ public class ConcentricGridViewPolygon : ConcentricGridView, ConcentricGridViewP
     /**
     Initializes an instance of the class using given params.
     
-    :param: grid A grid size in points.
-    :param: centralCell A centrall cell size of the grid in points.
-    :param: peripheralCell A peripheral cell size of the grid in points.
-    :param: cellMargin A margin between peripheral cells.
+    - parameter grid: A grid size in points.
+    - parameter centralCell: A centrall cell size of the grid in points.
+    - parameter peripheralCell: A peripheral cell size of the grid in points.
+    - parameter cellMargin: A margin between peripheral cells.
     
-    :returns: An initialized instance of the class.
+    - returns: An initialized instance of the class.
     */
     public override init(grid: CGSize, centralCell: CGSize, peripheralCell: CGSize, cellMargin: CGFloat) {
         super.init(grid: grid, centralCell: centralCell, peripheralCell: peripheralCell, cellMargin: cellMargin)
@@ -42,7 +42,7 @@ public class ConcentricGridViewPolygon : ConcentricGridView, ConcentricGridViewP
         self.add(figure: currentPolygon)
         
         // Create the walker instance with previous created polygon and put it onto the central cell
-        var walker = ConcentricGridViewPolygonWalker (
+        let walker = ConcentricGridViewPolygonWalker (
                 figure: currentPolygon,
                 centralCell: self.centralCell,
                 peripheralCell: self.peripheralCell,
@@ -80,7 +80,7 @@ public class ConcentricGridViewPolygon : ConcentricGridView, ConcentricGridViewP
             }
         }
         
-        for (index, figure) in enumerate(figures) {
+        for (index, figure) in figures.enumerate() {
             let polygon = figure as! ConcentricGridViewPolygonFigure
             
             // Skip the central cell (that is equals to the first polygon) because Walker has already processed it

@@ -15,9 +15,9 @@ class ConcentricGridViewUtils {
     /**
     Checks whether a number is even.
     
-    :param: number A number to check.
+    - parameter number: A number to check.
     
-    :returns: Whether a number is even.
+    - returns: Whether a number is even.
     */
     class func isEven(number: Int) -> Bool {
         return number % 2 == 0
@@ -26,9 +26,9 @@ class ConcentricGridViewUtils {
     /**
     Checks whether a number is odd.
     
-    :param: number A number to check.
+    - parameter number: A number to check.
     
-    :returns: Whether a number is odd.
+    - returns: Whether a number is odd.
     */
     class func isOdd(number: Int) -> Bool {
         return !isEven(number)

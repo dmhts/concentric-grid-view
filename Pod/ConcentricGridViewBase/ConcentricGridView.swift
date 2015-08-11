@@ -91,12 +91,12 @@ public class ConcentricGridView {
     /**
     Initializes and calculates a new grid view object with the provided parameters.
 
-    :param: grid The area size in points to be splitted into cells
-    :param: centralCell The central cell size in points
-    :param: peripheralCell The peripheral cell size in points
-    :param: cellMargin Vertical and horizontal margins of a grid cell in points
+    - parameter grid: The area size in points to be splitted into cells
+    - parameter centralCell: The central cell size in points
+    - parameter peripheralCell: The peripheral cell size in points
+    - parameter cellMargin: Vertical and horizontal margins of a grid cell in points
     
-    :returns: An initialized instance of the class.
+    - returns: An initialized instance of the class.
     */
     init(grid: CGSize, centralCell: CGSize, peripheralCell: CGSize, cellMargin: CGFloat){
         self.cellMargin = cellMargin
@@ -133,7 +133,7 @@ public class ConcentricGridView {
     /**
     It gives out point coordinates by the certain index on the grid.
 
-    :returns: Central point coordinates of the requested cell.
+    - returns: Central point coordinates of the requested cell.
     */
     public func getPointAt(index: Int) -> CGPoint? {
         for i in 0...figures.count - 1 {
@@ -148,9 +148,9 @@ public class ConcentricGridView {
     /**
     Adds a figure to to the grid storage
 
-    :param: figure A figure to add to the grid storage
+    - parameter figure: A figure to add to the grid storage
     */
-    func add(#figure: ConcentricGridViewFigure) {
+    func add(figure figure: ConcentricGridViewFigure) {
         figures.append(figure)
     }
     

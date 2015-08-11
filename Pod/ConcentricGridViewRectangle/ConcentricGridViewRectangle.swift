@@ -21,13 +21,13 @@ public class ConcentricGridViewRectangle : ConcentricGridView, ConcentricGridVie
     /**
     Initializes an instance of the class using given params.
     
-    :param: grid A grid size in points.
-    :param: isShifted Whether the grid should be shifted.
-    :param: centralCell A centrall cell size of the grid in points.
-    :param: peripheralCell A peripheral cell size of the grid in points.
-    :param: cellMargin A margin between peripheral cells.
+    - parameter grid: A grid size in points.
+    - parameter isShifted: Whether the grid should be shifted.
+    - parameter centralCell: A centrall cell size of the grid in points.
+    - parameter peripheralCell: A peripheral cell size of the grid in points.
+    - parameter cellMargin: A margin between peripheral cells.
 
-    :returns: An initialized instance of the class.
+    - returns: An initialized instance of the class.
     */
     public init(grid: CGSize, isShifted: Bool, centralCell: CGSize, peripheralCell: CGSize, cellMargin: CGFloat) {
         self.isShifted = isShifted
@@ -61,7 +61,7 @@ public class ConcentricGridViewRectangle : ConcentricGridView, ConcentricGridVie
             )
         self.add(figure: currentRect)
         
-        var walker = ConcentricGridViewRectangleWalker(
+        let walker = ConcentricGridViewRectangleWalker(
                 figure: currentRect,
                 centralCell: self.centralCell,
                 peripheralCell: self.peripheralCell,
@@ -110,7 +110,7 @@ public class ConcentricGridViewRectangle : ConcentricGridView, ConcentricGridVie
             self.add(figure: currentRect)
         }
         
-        for (index, figure) in enumerate(figures) {
+        for (index, figure) in figures.enumerate() {
             if (index > 0) {
                 let rectangle = figure as! ConcentricGridViewRectangleFigure
                 
@@ -127,9 +127,9 @@ public class ConcentricGridViewRectangle : ConcentricGridView, ConcentricGridVie
     /** 
     Checks whether a cell should be shifted in odd rectangles.
     
-    :param: cell A cell to check.
+    - parameter cell: A cell to check.
     
-    :returns: Whether a cell should be shifted.
+    - returns: Whether a cell should be shifted.
     */
     private func isCellNecessaryToShiftInOddRect(cell: ConcentricGridViewRectangleCell) -> Bool {
         let rectangleCell = cell as ConcentricGridViewRectangleCell
@@ -140,9 +140,9 @@ public class ConcentricGridViewRectangle : ConcentricGridView, ConcentricGridVie
     /**
     Checks whether a cell should be shifted in even rectangles.
     
-    :param: cell A cell to check.
+    - parameter cell: A cell to check.
     
-    :returns: Whether a cell should be shifed.
+    - returns: Whether a cell should be shifed.
     */
     private func isCellNecessaryToShiftInEvenRect(cell: ConcentricGridViewRectangleCell) -> Bool {
         let rectangleCell = cell as ConcentricGridViewRectangleCell

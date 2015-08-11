@@ -18,16 +18,16 @@ class ConcentricGridViewPolygonWalker : ConcentricGridViewWalker {
     /**
     Walker steps over to the outer polygon depending on a current position.
     
-    :param: polygon The outer polygon to move.
+    - parameter polygon: The outer polygon to move.
     */
-    func moveToOuter(#polygon: ConcentricGridViewPolygonFigure) {
+    func moveToOuter(polygon polygon: ConcentricGridViewPolygonFigure) {
         moveCellToRectangleEntrance()
         
         if (ConcentricGridViewUtils.isOdd(self.figure.index)) {
-            stepToTop(memorize: false)
-            halfStepToLeft(memorize: false)
+            stepToTop(false)
+            halfStepToLeft(false)
         } else if (ConcentricGridViewUtils.isEven(self.figure.index)) {
-            stepToLeft(memorize: false)
+            stepToLeft(false)
         }
         
         self.figure = polygon
@@ -37,7 +37,7 @@ class ConcentricGridViewPolygonWalker : ConcentricGridViewWalker {
     Moves Walker to the initial point of the outer polygon rectangle.
     */
     func moveCellToRectangleEntrance() {
-        var polygon = figure as! ConcentricGridViewPolygonFigure
+        let polygon = figure as! ConcentricGridViewPolygonFigure
         
         if let firstRectangle = polygon.getInnerRectangleBy(index: 0) {
             jumpToTopLeftCornerIn(rectangle: firstRectangle.frame, memorize: false)
@@ -48,7 +48,7 @@ class ConcentricGridViewPolygonWalker : ConcentricGridViewWalker {
     Adds an initial rectangle for a polygon.
     */
     private func addFirstInnerRectangle() {
-        var polygon = figure as! ConcentricGridViewPolygonFigure
+        let polygon = figure as! ConcentricGridViewPolygonFigure
         
         // Get the starting index on a rectangle side from that the swinging starts.
         let startIndex = polygon.isEven ?
@@ -70,7 +70,7 @@ class ConcentricGridViewPolygonWalker : ConcentricGridViewWalker {
     func calculateRectanglesForPolygon() {
         addFirstInnerRectangle()
         
-        var polygon = figure as! ConcentricGridViewPolygonFigure
+        let polygon = figure as! ConcentricGridViewPolygonFigure
         
         // Walker walks swing-wise from a middle point of the polygon's upper half (from top to bottom like a hanging sit with constantly increased amplitude) and this parameter counts the number of these swingings.
         // Actually swinging it's just a process of picking an index by priority.
@@ -111,10 +111,10 @@ class ConcentricGridViewPolygonWalker : ConcentricGridViewWalker {
     /**
     Moves Walker in a swinging way by a given priority.
     
-    :param: priority A priority of a current cell to calculate the next position.
+    - parameter priority: A priority of a current cell to calculate the next position.
     */
-    private func moveSwingingCellBy(#priority: Int) {
-        var polygon = figure as! ConcentricGridViewPolygonFigure
+    private func moveSwingingCellBy(priority priority: Int) {
+        let polygon = figure as! ConcentricGridViewPolygonFigure
         
         if polygon.isOdd {
             ConcentricGridViewUtils.isOdd(priority) ?
@@ -131,9 +131,9 @@ class ConcentricGridViewPolygonWalker : ConcentricGridViewWalker {
     Starts walking through polygon's rectangles.
     */
     func walkThroughPolygonRectangles() {
-        var polygon = figure as! ConcentricGridViewPolygonFigure
+        let polygon = figure as! ConcentricGridViewPolygonFigure
         
-        for (index, rectangle) in enumerate(polygon.rectangles) {
+        for (index, rectangle) in polygon.rectangles.enumerate() {
             // A walking algorithm is different for the last rectangle.
             if index == polygon.rectangles.count - 1 {
                 walkThroughLastInner(rectangle: rectangle)
@@ -147,10 +147,9 @@ class ConcentricGridViewPolygonWalker : ConcentricGridViewWalker {
     /**
     Starts walking through the last polygon's rectangle. The last rectangle requires different bypass logic.
     
-    :param: rectangle A primitive rectangle to bypass.
+    - parameter rectangle: A primitive rectangle to bypass.
     */
-    func walkThroughLastInner(#rectangle: ConcentricGridViewFigurePrimitive) {
-        var polygon = figure as! ConcentricGridViewPolygonFigure
+    func walkThroughLastInner(rectangle rectangle: ConcentricGridViewFigurePrimitive) {
         let innerRectanglesToWalk = splitRectangleIntoInnerPrimitives(rectangle: rectangle)
         
         for rectangle in innerRectanglesToWalk {
@@ -161,9 +160,9 @@ class ConcentricGridViewPolygonWalker : ConcentricGridViewWalker {
     /**
     Allows Walker to jump through all rectangles' corners starting from the top left one.
     
-    :param: rectangle A primitive rectangle to bypass.
+    - parameter rectangle: A primitive rectangle to bypass.
     */
-    func walkThroughCorners(#rectangle: ConcentricGridViewFigurePrimitive) {
+    func walkThroughCorners(rectangle rectangle: ConcentricGridViewFigurePrimitive) {
         jumpToTopLeftCornerIn(rectangle: rectangle.frame)
         jumpToBottomRightCornerIn(rectangle: rectangle.frame)
         jumpToTopRightCornerIn(rectangle: rectangle.frame)
@@ -173,9 +172,9 @@ class ConcentricGridViewPolygonWalker : ConcentricGridViewWalker {
     /**
     Splits a rectangle into inner primitives to implement unifrom bypass logic.
     
-    :param: rectangle A primitive rectangle to split.
+    - parameter rectangle: A primitive rectangle to split.
     */
-    func splitRectangleIntoInnerPrimitives(#rectangle: ConcentricGridViewFigurePrimitive) -> [ConcentricGridViewFigurePrimitive] {
+    func splitRectangleIntoInnerPrimitives(rectangle rectangle: ConcentricGridViewFigurePrimitive) -> [ConcentricGridViewFigurePrimitive] {
         var innerPrimitives = [ConcentricGridViewFigurePrimitive]()
         let rectangleWidthInCells = rectangle.splitIntoCellsUsing(cell: peripheralCell.size).width
         // Including a center item if number of cells is odd
@@ -187,8 +186,8 @@ class ConcentricGridViewPolygonWalker : ConcentricGridViewWalker {
         jumpToTopLeftCornerIn(rectangle: rectangle.frame, memorize: false)
         
         // Go right up to the middle top point
-        for index in 1...numberOfCellsToGoRight {
-            stepToRight(memorize: false)
+        for _ in 1...numberOfCellsToGoRight {
+            stepToRight(false)
         }
         
         let parentRectangleSizeInCells = rectangle.splitIntoCellsUsing(cell: peripheralCell.size)
@@ -202,7 +201,7 @@ class ConcentricGridViewPolygonWalker : ConcentricGridViewWalker {
             if ConcentricGridViewUtils.isOdd(Int(rectangleWidthInCells)) && index == 1 {
                 addToFigure(cell)
             } else {
-                stepToLeft(memorize: false)
+                stepToLeft(false)
             }
 
             // Add a primitive rectangle to the output array.
@@ -226,54 +225,54 @@ class ConcentricGridViewPolygonWalker : ConcentricGridViewWalker {
     /**
     Allows Walker to make a top right step diagonally.
     
-    :param: memorize Whether it should memorize a new cell.
+    - parameter memorize: Whether it should memorize a new cell.
     */
     func stepToTopRightDiagonally(memorize: Bool = true) {
-        stepToTop(memorize: false)
-        halfStepToRight(memorize: memorize)
+        stepToTop(false)
+        halfStepToRight(memorize)
     }
     
     /**
     Walker makes one step in the top direction diagonally.
 
-    :param: memorize Whether need to memorize the destination cell. The default value is `true`.
+    - parameter memorize: Whether need to memorize the destination cell. The default value is `true`.
     */
     func stepToBottomLeftDiagonally(memorize: Bool = true) {
-        stepToBottom(memorize: false)
-        halfStepToLeft(memorize: memorize)
+        stepToBottom(false)
+        halfStepToLeft(memorize)
     }
     
     /**
     Walker runs in the top direction diagonally and memorizes only the last cell of its running. It should be used only for the top half of a polygonal.
 
-    :param: stepsNumber The number of steps to run
-    :param: memorize Whether need to memorize the destination cell. The default value is `true`.
+    - parameter stepsNumber: The number of steps to run
+    - parameter memorize: Whether need to memorize the destination cell. The default value is `true`.
     */
-    func runToTopRightDiagonallyOn(#stepsNumber: Int, memorize: Bool = true) {
+    func runToTopRightDiagonallyOn(stepsNumber stepsNumber: Int, memorize: Bool = true) {
         for index in 1...stepsNumber {
             if index == stepsNumber {
-                stepToTopRightDiagonally(memorize: memorize)
+                stepToTopRightDiagonally(memorize)
                 break
             }
             
-            stepToTopRightDiagonally(memorize: false)
+            stepToTopRightDiagonally(false)
         }
     }
     
     /**
     Walker runs in the bottom direction diagonally and memorizes only the last cell of its running. It should be used only for the top half of a polygonal.
 
-    :param: stepsNumber The number of steps to run.
-    :param: memorize Whether need to memorize the destination cell. The default value is `true`.
+    - parameter stepsNumber: The number of steps to run.
+    - parameter memorize: Whether need to memorize the destination cell. The default value is `true`.
     */
-    func runToBottomLeftDiagonallyOn(#stepsNumber: Int, memorize: Bool = true) {
+    func runToBottomLeftDiagonallyOn(stepsNumber stepsNumber: Int, memorize: Bool = true) {
         for index in 1...stepsNumber {
             if index == stepsNumber {
-                stepToBottomLeftDiagonally(memorize: memorize)
+                stepToBottomLeftDiagonally(memorize)
                 break
             }
             
-            stepToBottomLeftDiagonally(memorize: false)
+            stepToBottomLeftDiagonally(false)
         }
     }
 }

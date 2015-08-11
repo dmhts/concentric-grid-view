@@ -25,12 +25,12 @@ class ConcentricGridViewRectangleFigure : ConcentricGridViewFigure {
     /**
     The wrapper of the designated initializer.
     
-    :param: index An index of the figure in the grid storage.
-    :param: previous A previous figure in the stack.
-    :param: sizeInCells A size of the figure in cells.
-    :param: isCutHorizontally Whether the figure is cut horizontally.
-    :param: isCutVertically Whether the figure is cut vertically.
-    :param: gridView A parent grid view.
+    - parameter index: An index of the figure in the grid storage.
+    - parameter previous: A previous figure in the stack.
+    - parameter sizeInCells: A size of the figure in cells.
+    - parameter isCutHorizontally: Whether the figure is cut horizontally.
+    - parameter isCutVertically: Whether the figure is cut vertically.
+    - parameter gridView: A parent grid view.
     */
     convenience init(index: Int, previous: ConcentricGridViewRectangleFigure?, sizeInCells: CGSize, isCutHorizontally: Bool, isCutVertically: Bool, gridView: ConcentricGridViewRectangle){
         self.init(index: index, previous: previous, sizeInCells: sizeInCells, gridView: gridView)
@@ -43,9 +43,9 @@ class ConcentricGridViewRectangleFigure : ConcentricGridViewFigure {
     /**
     Makes a shift for a cell at given index.
     
-    :param: index An index of a cell to shift.
+    - parameter index: An index of a cell to shift.
     
-    :returns: Whether a cell has been shifted.
+    - returns: Whether a cell has been shifted.
     */
     func makeShiftForCellAt(index: Int) -> Bool {
         // Shift to the right
@@ -67,15 +67,12 @@ enum RectSide {
     case none
     
     static func getMidPointBySide(side: RectSide) -> RectPositionOnSide {
-        var positionOnSide: RectPositionOnSide!
-        
         switch side {
         case .top : return RectPositionOnSide.topMiddle
         case .right : return RectPositionOnSide.rightMiddle
         case .bottom : return RectPositionOnSide.bottomMiddle
         case .left : return RectPositionOnSide.leftMiddle
         case .none : return .none
-        default: return .none
         }
     }
 

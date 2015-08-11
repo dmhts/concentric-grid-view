@@ -19,9 +19,9 @@ class ConcentricGridViewFigurePrimitive {
     /**
     Initializes an instance of the class using a given frame.
     
-    :param: frame A frame rectangle that describes a position and a size of the figure in the grid.
+    - parameter frame: A frame rectangle that describes a position and a size of the figure in the grid.
     
-    :returns: An initialized instance of the class.
+    - returns: An initialized instance of the class.
     */
     init(frame: CGRect) {
         self.frame = frame
@@ -30,11 +30,11 @@ class ConcentricGridViewFigurePrimitive {
     /**
     A wrapper for the designated constructor to simplify the initialization.
     
-    :param: cell A size of a cell. A primitive figure consists of cells.
-    :param: sizeInCells A primitive figure size in cells.
-    :param: origin An origin point of a primitive figure. It means a top left corner.
+    - parameter cell: A size of a cell. A primitive figure consists of cells.
+    - parameter sizeInCells: A primitive figure size in cells.
+    - parameter origin: An origin point of a primitive figure. It means a top left corner.
     
-    :returns: An initialized instance of the class.
+    - returns: An initialized instance of the class.
     */
     convenience init(cell: CGSize, sizeInCells: CGSize, origin: CGPoint) {
         let figureSizeInPts = CGSizeMake(
@@ -55,9 +55,9 @@ class ConcentricGridViewFigurePrimitive {
     /**
     Gets a size of the figure in cells. A size in pts is always known.
     
-    :param: cell A size of a cell that is used in the splitting.
+    - parameter cell: A size of a cell that is used in the splitting.
     */
-    func splitIntoCellsUsing(#cell: CGSize) -> CGSize {
+    func splitIntoCellsUsing(cell cell: CGSize) -> CGSize {
         return CGSizeMake(
             frame.width / cell.width,
             frame.height / cell.height
