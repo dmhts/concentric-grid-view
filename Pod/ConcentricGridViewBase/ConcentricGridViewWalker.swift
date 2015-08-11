@@ -33,12 +33,12 @@ class ConcentricGridViewWalker {
     /**
     Inits the Walker instance that is already standning on the central cell of the grid. And this cell is already stored into the ongoing figure.
 
-    - parameter figure: A figure that Walker uses for storing passed cells.
-    - parameter centralCell: A centrall cell of the grid.
-    - parameter peripheralCell: A peripheral cell of the grid.
-    - parameter grid: A grid instance that Walker is used for bypassing.
+    :param: figure A figure that Walker uses for storing passed cells.
+    :param: centralCell A centrall cell of the grid.
+    :param: peripheralCell A peripheral cell of the grid.
+    :param: grid A grid instance that Walker is used for bypassing.
     
-    - returns: An initialized instance of the class.
+    :returns: An initialized instance of the class.
     */
     init(figure: ConcentricGridViewFigure, centralCell: CGRect, peripheralCell: CGRect, grid: CGSize) {
         self.figure = figure
@@ -64,8 +64,8 @@ class ConcentricGridViewWalker {
     /**
     Allows Walker to step onto a given cell.
     
-    - parameter frame: A frame of a cell for the next step.
-    - parameter memorize: Whether a cell should be memorized. The default value is `true`.
+    :param: frame A frame of a cell for the next step.
+    :param: memorize Whether a cell should be memorized. The default value is `true`.
     */
     func stepToCellWith(frame: CGRect, memorize: Bool = true) {
         
@@ -108,7 +108,7 @@ class ConcentricGridViewWalker {
     /**
     Adds a given cell to the figure.
     
-    - parameter newCell: A cell to add to the figure.
+    :param: newCell A cell to add to the figure.
     */
     func addToFigure(newCell: ConcentricGridViewCell) {
         figure.addCell(newCell)
@@ -117,7 +117,7 @@ class ConcentricGridViewWalker {
     /**
     Changes the cell to given one.
     
-    - parameter newOne: A cell to change.
+    :param: newOne A cell to change.
     */
     func changeCellOn(newOne: ConcentricGridViewCell) {
         cell = newOne
@@ -126,7 +126,7 @@ class ConcentricGridViewWalker {
     /**
     Allows Walker to jump onto the opposite side.
     
-    - parameter memorize: Whether need to memorize the destination cell. The default value is `true`.
+    :param: memorize Whether need to memorize the destination cell. The default value is `true`.
     */
     func jumpToOppositeBottomCell(memorize: Bool = true) {
          moveRelativeTo(0, -figure.frame.height + cell.frame.height, memorize)
@@ -135,7 +135,7 @@ class ConcentricGridViewWalker {
     /**
     Allows Walker to jump to the top left corner of the current rect.
 
-    - parameter memorize: Whether need to memorize the destination cell. The default value is `true`.
+    :param: memorize Whether need to memorize the destination cell. The default value is `true`.
     */
     func jumpToTopLeftCornerIn(rectangle rectangle: CGRect?, memorize: Bool = true) {
         let frame = (rectangle != nil) ? rectangle! : figure.frame
@@ -150,8 +150,8 @@ class ConcentricGridViewWalker {
     /**
     Allows Walker to jump onto a top right corner of the current figure.
 
-    - parameter rectangle: A rectangle to jump.
-    - parameter memorize: Whether need to memorize the destination cell. The default value is `true`.
+    :param: rectangle A rectangle to jump.
+    :param: memorize Whether need to memorize the destination cell. The default value is `true`.
     */
     func jumpToTopRightCornerIn(rectangle rectangle: CGRect?, memorize: Bool = true) {
         let frame = (rectangle != nil) ? rectangle! : figure.frame
@@ -166,8 +166,8 @@ class ConcentricGridViewWalker {
     /**
     Allows Walker to jump onto a bottom right corner of the current figure.
 
-    - parameter rectangle: A rectangle to jump.
-    - parameter memorize: Whether need to memorize the destination cell. The default value is `true`.
+    :param: rectangle A rectangle to jump.
+    :param: memorize Whether need to memorize the destination cell. The default value is `true`.
     */
     func jumpToBottomRightCornerIn(rectangle rectangle: CGRect?, memorize: Bool = true) {
         let frame = (rectangle != nil) ? rectangle! : figure.frame
@@ -182,8 +182,8 @@ class ConcentricGridViewWalker {
     /**
     Allows Walker to jump onto a bottom left corner of the current rect.
 
-    - parameter rectangle: A rectangle to jump.
-    - parameter memorize: Whether need to memorize the destination cell. The default value is `true`.
+    :param: rectangle A rectangle to jump.
+    :param: memorize Whether need to memorize the destination cell. The default value is `true`.
     */
     func jumpToBottomLeftCornerIn(rectangle rectangle: CGRect?, memorize: Bool = true) {
         let frame = (rectangle != nil) ? rectangle! : figure.frame
@@ -198,81 +198,81 @@ class ConcentricGridViewWalker {
     /**
     Allows Walker to make one step in the right direction. This method is used for convenience as a wrapper.
 
-    - parameter memorize: Whether need to memorize the destination cell. The default value is `true`.
+    :param: memorize Whether need to memorize the destination cell. The default value is `true`.
     */
-    func halfStepToRight(memorize: Bool = true) {
+    func halfStepToRight(memorize memorize: Bool = true) {
         moveRelativeTo(peripheralCell.width / 2, 0, memorize)
     }
     
     /**
     Allows Walker to make one step in the right direction. This method is used for convenience as a wrapper.
 
-    - parameter memorize: Whether need to memorize the destination cell. The default value is `true`.
+    :param: memorize Whether need to memorize the destination cell. The default value is `true`.
     */
-    func stepToRight(memorize: Bool = true) -> Void {
+    func stepToRight(memorize memorize: Bool = true) -> Void {
         moveRelativeTo(peripheralCell.width, 0, memorize)
     }
     
     /**
     Allows Walker to make one step in the bottom direction. This method is used for convenience as a wrapper.
 
-    - parameter memorize: Whether need to memorize the destination cell. The default value is `true`.
+    :param: memorize Whether need to memorize the destination cell. The default value is `true`.
     */
-    func stepToBottom(memorize: Bool = true) {
+    func stepToBottom(memorize memorize: Bool = true) {
         moveRelativeTo(0, peripheralCell.height, memorize)
     }
     
     /**
     Allows Walker to make a half-step in the bottom direction. This method is used for convenience as a wrapper.
 
-    - parameter memorize: Whether need to memorize the destination cell. The default value is `true`.
+    :param: memorize Whether need to memorize the destination cell. The default value is `true`.
     */
-    func halfStepToBottom(memorize: Bool = true) {
+    func halfStepToBottom(memorize memorize: Bool = true) {
         moveRelativeTo(0, peripheralCell.height / 2, memorize)
     }
     
     /**
     Allows Walker to make one step in the left direction. This method is used for convenience as a wrapper.
 
-    - parameter memorize: Whether need to memorize the destination cell. The default value is `true`.
+    :param: memorize Whether need to memorize the destination cell. The default value is `true`.
     */
-    func stepToLeft(memorize: Bool = true) {
+    func stepToLeft(memorize memorize: Bool = true) {
         moveRelativeTo(-peripheralCell.width, 0, memorize)
     }
     
     /**
     Allows Walker to make a half-step in the left direction. This method is used for convenience as a wrapper.
 
-    - parameter memorize: Whether need to memorize the destination cell. The default value is `true`.
+    :param: memorize Whether need to memorize the destination cell. The default value is `true`.
     */
-    func halfStepToLeft(memorize: Bool = true) {
+    func halfStepToLeft(memorize memorize: Bool = true) {
         moveRelativeTo(-peripheralCell.width / 2, 0, memorize)
     }
     
     /**
     Allows Walker to make one step in the top direction. This method is used for convenience as a wrapper.
 
-    - parameter memorize: Whether need to memorize the destination cell. The default value is `true`.
+    :param: memorize Whether need to memorize the destination cell. The default value is `true`.
     */
-    func stepToTop(memorize: Bool = true) {
+    func stepToTop(memorize memorize: Bool = true) {
         moveRelativeTo(0, -peripheralCell.height, memorize)
     }
     
     /**
     Allows Walker to make a half-step in the top direction. This method is used for convenience as a wrapper.
 
-    - parameter memorize: Whether need to memorize the destination cell. The default value is `true`.
+    :param: memorize Whether need to memorize the destination cell. The default value is `true`.
     */
-    func halfStepToTop(memorize: Bool = true) {
+    func halfStepToTop(memorize memorize: Bool = true) {
         moveRelativeTo(0, -peripheralCell.height / 2, memorize)
     }
     
     /**
     Moves Walker to a given cell relatively to the current one.
     
-    - parameter dx: A delta of x-coordinate to go.
-    - parameter dy: A delta of y-coordinate to go.
-    - parameter memorize: Whether it should memorize a new cell.
+    :param: dx A delta of x-coordinate to go.
+    :param: dy A delta of y-coordinate to go.
+    :param: memorize Whether it should memorize a new cell.
     */
     func moveRelativeTo(dx: CGFloat, _ dy: CGFloat, _ memorize: Bool = true) {
         let frame = CGRectOffset(
@@ -290,9 +290,9 @@ class ConcentricGridViewWalker {
     /**
     Moves Walker to a given cell relatively to a device screen.
     
-    - parameter x: An x-coordinate to go
-    - parameter y: An y-coordinate to go
-    - parameter memorize: Whether it shoud memorize a new cell.
+    :param: x An x-coordinate to go
+    :param: y An y-coordinate to go
+    :param: memorize Whether it shoud memorize a new cell.
     */
     func moveAbsoluteTo(x: CGFloat, _ y: CGFloat, _ memorize: Bool = true) {
         let frame = CGRectMake(

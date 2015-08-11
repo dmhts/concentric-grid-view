@@ -51,11 +51,11 @@ class ConcentricGridViewFigure : ConcentricGridViewFigurePrimitive {
     /**
     Initializes an instance of the class using a given index, frame and a parent grid.
     
-    - parameter index: An index of the figure in the grid.
-    - parameter frame: A frame that describes a position and a size of the figure.
-    - parameter gridView: A parent grid.
+    :param: index An index of the figure in the grid.
+    :param: frame A frame that describes a position and a size of the figure.
+    :param: gridView A parent grid.
     
-    - returns: An initialized instance of the class.
+    :returns: An initialized instance of the class.
     */
     init(index: Int, frame: CGRect, gridView: ConcentricGridView) {
         self.index = index
@@ -67,12 +67,12 @@ class ConcentricGridViewFigure : ConcentricGridViewFigurePrimitive {
     /**
     A wrapper for the designated constructor to simplify the initialization.
     
-    - parameter index: An index of the figure in the grid.
-    - parameter previous:  Whether a the figure has a previous one.
-    - parameter sizeInCells: A size of the figure in cells.
-    - parameter gridView: A parent grid.
+    :param: index An index of the figure in the grid.
+    :param: previous  Whether a the figure has a previous one.
+    :param: sizeInCells A size of the figure in cells.
+    :param: gridView A parent grid.
     
-    - returns: An initialized instance of the class.
+    :returns: An initialized instance of the class.
     */
     convenience init(index: Int, previous: ConcentricGridViewFigure?, sizeInCells: CGSize, gridView: ConcentricGridView) {
         let rectangleSizeInPts = CGSizeMake(
@@ -94,9 +94,9 @@ class ConcentricGridViewFigure : ConcentricGridViewFigurePrimitive {
     /**
     Checks whether a given cell is inside the figure.
     
-    - parameter cell: A cell to check.
+    :param: cell A cell to check.
     
-    - returns: Whether a given cell is inside the figure.
+    :returns: Whether a given cell is inside the figure.
     */
     func doesCellAlreadyInside(cell: ConcentricGridViewCell) -> Bool {
         if cells.count > 0 {
@@ -113,9 +113,9 @@ class ConcentricGridViewFigure : ConcentricGridViewFigurePrimitive {
     /**
     Adds a cell to the cell storage.
     
-    - parameter cell: A cell to add.
+    :param: cell A cell to add.
     
-    - returns: Returns false if a given cell is already in the storage and vice versa.
+    :returns: Returns false if a given cell is already in the storage and vice versa.
     */
     func addCell(cell: ConcentricGridViewCell) -> Bool {
         if !doesCellAlreadyInside(cell) {
@@ -130,7 +130,7 @@ class ConcentricGridViewFigure : ConcentricGridViewFigurePrimitive {
     /**
     Gets the cell by an index.
     
-    - parameter index: An index to fetch a cell by.
+    :param: index An index to fetch a cell by.
     
     "returns: An instance of the found cell or nil.
     */
@@ -147,9 +147,9 @@ class ConcentricGridViewFigure : ConcentricGridViewFigurePrimitive {
     /**
     Gets a cell by a frame.
     
-    - parameter frame: A frame to find by.
+    :param: frame A frame to find by.
     
-    - returns: An instance of the found cell or nil.
+    :returns: An instance of the found cell or nil.
     */
     func getCellBy(frame: CGRect) -> ConcentricGridViewCell? {
         if cells.count > 0 {
@@ -166,7 +166,7 @@ class ConcentricGridViewFigure : ConcentricGridViewFigurePrimitive {
     /**
     Gets the last cell of the figure.
     
-    - returns: An instance of the found cell or nil if there are no cells yet.
+    :returns: An instance of the found cell or nil if there are no cells yet.
     */
     func getLastCell() -> ConcentricGridViewCell? {
         if cells.count > 0 {

@@ -17,12 +17,12 @@ public class ConcentricGridViewPolygon : ConcentricGridView, ConcentricGridViewP
     /**
     Initializes an instance of the class using given params.
     
-    - parameter grid: A grid size in points.
-    - parameter centralCell: A centrall cell size of the grid in points.
-    - parameter peripheralCell: A peripheral cell size of the grid in points.
-    - parameter cellMargin: A margin between peripheral cells.
+    :param: grid A grid size in points.
+    :param: centralCell A centrall cell size of the grid in points.
+    :param: peripheralCell A peripheral cell size of the grid in points.
+    :param: cellMargin A margin between peripheral cells.
     
-    - returns: An initialized instance of the class.
+    :returns: An initialized instance of the class.
     */
     public override init(grid: CGSize, centralCell: CGSize, peripheralCell: CGSize, cellMargin: CGFloat) {
         super.init(grid: grid, centralCell: centralCell, peripheralCell: peripheralCell, cellMargin: cellMargin)

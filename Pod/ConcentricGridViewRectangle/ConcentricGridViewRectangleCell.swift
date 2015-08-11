@@ -22,12 +22,12 @@ class ConcentricGridViewRectangleCell : ConcentricGridViewCell {
     /**
     Initializes an instance of the class using given params.
     
-    - parameter index: An index of the cell in the figure.
-    - parameter frame: A frame that describes a position and a size of the cell.
-    - parameter side: A side that the cell represents.
-    - parameter positionOnSide: A position on the side.
+    :param: index An index of the cell in the figure.
+    :param: frame A frame that describes a position and a size of the cell.
+    :param: side A side that the cell represents.
+    :param: positionOnSide A position on the side.
     
-    - returns: An initialized instance of the class.
+    :returns: An initialized instance of the class.
     */
     init(index: Int, frame: CGRect, side: RectSide, positionOnSide: RectPositionOnSide) {
         self.side = side

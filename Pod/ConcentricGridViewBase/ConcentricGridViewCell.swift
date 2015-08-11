@@ -22,10 +22,10 @@ class ConcentricGridViewCell : Equatable {
     /** 
     Initializes an instance of the class using a given index and a frame.
     
-    - parameter index: An index of a cell in the grid.
-    - parameter frame: A frame rectangle that describes a position and a size of the cell in the grid.
+    :param: index An index of a cell in the grid.
+    :param: frame A frame rectangle that describes a position and a size of the cell in the grid.
     
-    - returns: An initialized instance of the class.
+    :returns: An initialized instance of the class.
     */
     init(index: Int, frame: CGRect) {
         self.index = index
@@ -35,7 +35,7 @@ class ConcentricGridViewCell : Equatable {
     /**
     Gets a center point of the cell instead of the origin one (origin-like coordinates are used by CG classes).
     
-    - returns: A center point.
+    :returns: A center point.
     */
     func getCenterPoint() -> CGPoint {
         return CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame))
