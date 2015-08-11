@@ -53,7 +53,7 @@ class CBaseCollectionViewController: UICollectionViewController {
         if let _collectionView = collectionView {
             
             _collectionView.performBatchUpdates({
-                var item = NSIndexPath(forItem: self.cells.count, inSection: 0)
+                let item = NSIndexPath(forItem: self.cells.count, inSection: 0)
                 
                 self.cells.append(item)
                 _collectionView.insertItemsAtIndexPaths([item])
@@ -65,14 +65,14 @@ class CBaseCollectionViewController: UICollectionViewController {
     }
 }
 
-extension CBaseCollectionViewController : UICollectionViewDataSource {
+extension CBaseCollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cells.count
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("RoundCell", forIndexPath: indexPath) as! UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("RoundCell", forIndexPath: indexPath) 
         
         return cell
     }

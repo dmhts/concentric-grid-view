@@ -34,7 +34,7 @@ class CBaseCollectionViewLayout : UICollectionViewLayout {
         return concentricGridView.getPointAt(indexPath.item)!
     }
     
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes! {
+    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         let attributes: UICollectionViewLayoutAttributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
         
         attributes.center = getPoint(indexPath)
@@ -43,18 +43,16 @@ class CBaseCollectionViewLayout : UICollectionViewLayout {
         return attributes
     }
     
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [AnyObject]? {
+    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var attributesList = [UICollectionViewLayoutAttributes]()
         
         if cellCount > 0 {
             for index in 0...cellCount - 1 {
-                var indexPath: NSIndexPath = NSIndexPath(forItem: index, inSection: 0)
-                var attributeForIndexPath = layoutAttributesForItemAtIndexPath(indexPath)
+                let indexPath: NSIndexPath = NSIndexPath(forItem: index, inSection: 0)
                 
-                var frame = attributeForIndexPath.frame
-                
-                if (CGRectContainsRect(rect, attributeForIndexPath.frame)) {
-                    attributesList.append(attributeForIndexPath)
+                if let attributeForIndexPath = layoutAttributesForItemAtIndexPath(indexPath)
+                    where (CGRectContainsRect(rect, attributeForIndexPath.frame)) {
+                        attributesList.append(attributeForIndexPath)
                 }
             }
         }
@@ -62,12 +60,13 @@ class CBaseCollectionViewLayout : UICollectionViewLayout {
         return attributesList
     }
     
-    override func prepareForCollectionViewUpdates(updateItems: [AnyObject]!) {
+    
+    override func prepareForCollectionViewUpdates(updateItems: [UICollectionViewUpdateItem]) {
         super.prepareForCollectionViewUpdates(updateItems)
         
         for updateItem in updateItems {
             if (updateItem.updateAction == UICollectionUpdateAction.Insert) {
-                insertIndexPaths.append(updateItem.indexPathAfterUpdate!!)
+                insertIndexPaths.append(updateItem.indexPathAfterUpdate)
             }
         }
     }
@@ -81,7 +80,7 @@ class CBaseCollectionViewLayout : UICollectionViewLayout {
     override func initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         var attributes: UICollectionViewLayoutAttributes? = super.initialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath)
         
-        if (contains(insertIndexPaths, itemIndexPath)) {
+        if (insertIndexPaths.contains(itemIndexPath)) {
             if (attributes == nil) {
                 attributes = layoutAttributesForItemAtIndexPath(itemIndexPath)
             }

@@ -18,10 +18,10 @@ class CRectangleCollectionViewController: CBaseCollectionViewController {
     
 }
 
-extension CRectangleCollectionViewController : UICollectionViewDataSource {
+extension CRectangleCollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("RoundCell", forIndexPath: indexPath) as! CRectangleCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("RoundCell", forIndexPath: indexPath) as! CRectangleCollectionViewCell
         
         cell.label.text = "\(indexPath.item)"
         

@@ -18,10 +18,10 @@ class CPolygonCollectionViewController: CBaseCollectionViewController {
     
 }
 
-extension CPolygonCollectionViewController : UICollectionViewDataSource {
+extension CPolygonCollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cell = collectionView.dequeueReusableCellWithReuseIdentifier("RoundCell", forIndexPath: indexPath) as! CPolygonCollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("RoundCell", forIndexPath: indexPath) as! CPolygonCollectionViewCell
         
         cell.label.text = "\(indexPath.item)"
         
