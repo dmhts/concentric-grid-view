@@ -179,13 +179,13 @@ class ConcentricGridViewRectangleWalker : ConcentricGridViewWalker {
     :returns: An ongoing instance of the class.
     */
     func walkAlongSide(
-        stepFunc: (Bool, RectSide, RectPositionOnSide) -> Void,
         side: RectSide = .none,
         endingCorner: RectPositionOnSide = .none,
         notReachingEnd: Int = 0,
         doNotMemorizeOddCells : Bool = false,
-        doNotMemorizeEvenCells: Bool = false
-        ) -> ConcentricGridViewRectangleWalker {
+        doNotMemorizeEvenCells: Bool = false,
+        stepFunc: (Bool, RectSide, RectPositionOnSide) -> Void
+    ) -> ConcentricGridViewRectangleWalker {
             let rectangle = figure as! ConcentricGridViewRectangleFigure
             
             // The decrement here is used because the walker is already staying on the first cell of the given side before starting walking
@@ -222,10 +222,10 @@ class ConcentricGridViewRectangleWalker : ConcentricGridViewWalker {
     */
     func walkAlongTopSide(notReachingEnd: Int = 0) -> ConcentricGridViewRectangleWalker {
         walkAlongSide(
-            stepToRight,
             side: RectSide.top,
             endingCorner: RectPositionOnSide.topRight,
-            notReachingEnd: notReachingEnd
+            notReachingEnd: notReachingEnd,
+            stepFunc: stepToRight
         )
         
         return self
@@ -240,10 +240,10 @@ class ConcentricGridViewRectangleWalker : ConcentricGridViewWalker {
     */
     func walkAlongRightSide(notReachingEnd: Int = 0) -> ConcentricGridViewRectangleWalker {
         walkAlongSide(
-            stepToBottom,
             side: RectSide.right,
             endingCorner: RectPositionOnSide.bottomRight,
-            notReachingEnd: notReachingEnd
+            notReachingEnd: notReachingEnd,
+            stepFunc: stepToBottom
         )
         
         return self
@@ -258,10 +258,10 @@ class ConcentricGridViewRectangleWalker : ConcentricGridViewWalker {
     */
     func walkAlongBottomSide(notReachingEnd: Int = 0) -> ConcentricGridViewRectangleWalker {
         walkAlongSide(
-            stepToLeft,
             side: RectSide.bottom,
             endingCorner: RectPositionOnSide.bottomLeft,
-            notReachingEnd: notReachingEnd
+            notReachingEnd: notReachingEnd,
+            stepFunc: stepToLeft
         )
         
         return self
@@ -276,10 +276,10 @@ class ConcentricGridViewRectangleWalker : ConcentricGridViewWalker {
     */
     func walkAlongLeftSide(notReachingEnd: Int = 0) -> ConcentricGridViewRectangleWalker {
         walkAlongSide(
-            stepToTop,
             side: RectSide.left,
             endingCorner: RectPositionOnSide.topLeft,
-            notReachingEnd: notReachingEnd
+            notReachingEnd: notReachingEnd,
+            stepFunc: stepToTop
         )
         
         return self
@@ -294,11 +294,11 @@ class ConcentricGridViewRectangleWalker : ConcentricGridViewWalker {
     */
     func walkAlongRightSideDoNotMemorizeOddCells() -> ConcentricGridViewRectangleWalker {
         walkAlongSide(
-            stepToBottom,
             side: RectSide.right,
             endingCorner: RectPositionOnSide.bottomRight,
             notReachingEnd: 0,
-            doNotMemorizeOddCells: true
+            doNotMemorizeOddCells: true,
+            stepFunc: stepToBottom
         )
         
         return self
