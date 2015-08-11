@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ConcentricGridView"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "Concentric grid system"
   s.description  = <<-DESC
     ConcentricGridView is a grid system that is used by UICollectionViewLayout
@@ -8,9 +8,9 @@ Pod::Spec.new do |s|
                    DESC
   s.homepage         = "https://github.com/dmgts/concentric-grid-view"
   s.license          = { :type => "MIT", :file => "LICENSE" }
-  s.authors          = { "Dmitry Gutsulyak" => "doberq@gmail.com" }
+  s.authors          = { "Dmitry Gutsulyak" => "gutsulyak.dmitry+github@gmail.com" }
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "https://github.com/dmgts/concentric-grid-view.git", :tag => "0.0.1" }
+  s.source       = { :git => "https://github.com/dmgts/concentric-grid-view.git", :tag => "0.0.2" }
   s.source_files  = "Pod/**/*.{h,swift}"
   s.requires_arc = true
 end
